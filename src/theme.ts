@@ -1,10 +1,12 @@
-import { ImageStyle, TextStyle, ViewStyle } from "react-native";
+import Constants from 'expo-constants';
 
 const theme = {
   colors: {
     textPrimary: '#24292e',
-    textSecondary: '#586069',
+    textSecondary: '#faf9f9',
+    textAppBar:'#faf9f9',
     primary: '#0366d6',
+    appBarBackGround: '#24292e',
   },
   fontSizes: {
     body: 14,
@@ -14,9 +16,13 @@ const theme = {
     main: 'System',
   },
   fontWeights: {
-    normal: '400' as const,
-    bold: '700' as const,
+    normal: '400',
+    bold: '700',
   },
-};
+  length: {
+    height: Constants.statusBarHeight,
+    barHeight: 35,
+  },
+} as const;
 
 export default theme;

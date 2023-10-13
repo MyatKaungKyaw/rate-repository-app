@@ -1,6 +1,7 @@
 import { Text as NativeText, StyleSheet, TextStyle } from 'react-native';
 
 import theme from '../theme';
+import { ReactNode } from 'react';
 
 const styles = StyleSheet.create({
   text: {
@@ -24,15 +25,14 @@ const styles = StyleSheet.create({
 });
 
 interface TextProps {
-  color: string | undefined;
-  fontSize: string | undefined;
-  fontWeight: string | undefined;
-  style: Object;
-  [index: string]: any | undefined;
+  color?: 'textSecondary' | 'primary';
+  fontSize?: 'subheading';
+  fontWeight?: 'bold';
+  style?: TextStyle;
+  children?:ReactNode;
 }
 
-
-const Text = ({ color, fontSize, fontWeight, style, ...props }: TextProps) => {
+const Text = ({ color, fontSize, fontWeight, style, children}: TextProps) => {
   const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
@@ -42,7 +42,7 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }: TextProps) => {
     style,
   ];
 
-  return <NativeText style={textStyle} {...props} />;
+  return <NativeText style={textStyle}>{children}</NativeText>;
 };
 
 export default Text;
