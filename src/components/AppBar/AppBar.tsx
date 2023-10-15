@@ -1,6 +1,6 @@
 import { View, StyleSheet, Pressable } from 'react-native';
 import theme from '../../theme';
-import TextSubHeading from '../TextSubHeading';
+import TextPrimary from '../Text/TextPrimary';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return <View style={styles.container}>
     <Pressable>
-      <TextSubHeading>Repositories</TextSubHeading>
+      <TextPrimary color='textSecondary'>Repositories</TextPrimary>
     </Pressable>
   </View>;
 };

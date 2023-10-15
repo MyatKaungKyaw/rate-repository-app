@@ -1,5 +1,5 @@
 import { Text, StyleSheet, View } from 'react-native';
-import RepositoryList from './RepositoryList';
+import RepositoryList from './Repository/RepositoryList';
 import theme from '../theme';
 import AppBar from './AppBar/AppBar';
 
