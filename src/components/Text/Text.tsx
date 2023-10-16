@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
   colorPrimary: {
     color: theme.colors.primary,
   },
+  colorTextTertiary:{
+    color: theme.colors.textTertiary,
+  },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
   },
@@ -24,25 +27,27 @@ const styles = StyleSheet.create({
   },
 });
 
-interface TextProps {
-  color?: 'textSecondary' | 'primary';
+export interface TextProps {
+  color?: 'secondary' | 'primary' | 'tertiary';
   fontSize?: 'subheading';
   fontWeight?: 'bold';
   style?: TextStyle;
   children?:ReactNode;
+  props?: React.ComponentProps<typeof NativeText>
 }
 
-const Text = ({ color, fontSize, fontWeight, style, children}: TextProps) => {
+const Text = ({ color, fontSize, fontWeight, style, children, ...props}: TextProps) => {
   const textStyle = [
     styles.text,
-    color === 'textSecondary' && styles.colorTextSecondary,
+    color === 'secondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
+    color === 'tertiary' && styles.colorTextTertiary,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
     style,
   ];
 
-  return <NativeText style={textStyle}>{children}</NativeText>;
+  return <NativeText style={textStyle} {...props}>{children}</NativeText>;
 };
 
 export default Text;

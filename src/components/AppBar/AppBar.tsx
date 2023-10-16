@@ -5,7 +5,7 @@ import TextPrimary from '../Text/TextPrimary';
 const styles = StyleSheet.create({
   container: {
     paddingTop: theme.length.height,
-    backgroundColor: theme.colors.appBarBackGround,
+    backgroundColor: theme.colors.textPrimary,
     height: theme.length.barHeight,
   },
 });
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return <View style={styles.container}>
     <Pressable>
-      <TextPrimary color='textSecondary'>Repositories</TextPrimary>
+      <TextPrimary color='secondary'>Repositories</TextPrimary>
     </Pressable>
   </View>;
 };

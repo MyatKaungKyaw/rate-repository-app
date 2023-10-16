@@ -1,18 +1,22 @@
 import { ReactNode } from "react";
-import Text from "./Text";
-import theme from '../../theme';
+import Text, { TextProps } from "./Text";
+import { TextStyle } from "react-native";
 
 
 interface Props {
   children?: ReactNode;
-  color?: 'primary' | 'textSecondary';
+  color?: TextProps["color"];
+  style?: TextStyle;
+  props?: TextProps['props'];
 }
 
-const TextPrimary = ({ children, color = 'primary' }: Props) => (
+const TextPrimary = ({ children, color, style, ...props }: Props) => (
   <Text
     color={color}
     fontSize="subheading"
     fontWeight="bold"
+    style={style}
+    {...props}
   >{children}</Text>
 )
 

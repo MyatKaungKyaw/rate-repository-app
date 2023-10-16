@@ -4,9 +4,10 @@ const theme = {
   colors: {
     textPrimary: '#24292e',
     textSecondary: '#faf9f9',
-    textAppBar:'#faf9f9',
+    textTertiary: '#626262',
     primary: '#0366d6',
-    appBarBackGround: '#24292e',
+    secondary: '#faf9f9',
+    mainBackGround: '#e1e4e8',
   },
   fontSizes: {
     body: 14,
@@ -22,6 +23,8 @@ const theme = {
   length: {
     height: Constants.statusBarHeight,
     barHeight: 35,
+    logoLength: 50,
+    radiusRatio: 10/57,
   },
 } as const;
 
