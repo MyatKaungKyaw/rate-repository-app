@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
   component: {
     flex: 1,
     flexDirection: 'column',
-    // alignSelf: 'flex-start',
-    backgroundColor: '#e2e2e2',
+    flexBasis:'auto',
   },
   text: {
     textAlign: 'center',
@@ -26,8 +25,8 @@ const getWitKSuffix = (count: number): string => {
 
 const Count = ({ unit, count }: Props) => (
   <View style={styles.component}>
-    <TextPrimary style={styles.text}>{getWitKSuffix(count)}</TextPrimary>
-    <Text color="tertiary" style={styles.text}>{unit}</Text>
+    <TextPrimary numberOfLines={1} style={styles.text}>{getWitKSuffix(count)}</TextPrimary>
+    <Text numberOfLines={1} color="tertiary" style={styles.text}>{unit}</Text>
   </View>
 );
 
