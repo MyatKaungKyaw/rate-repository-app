@@ -1,13 +1,12 @@
 import { ReactNode } from "react";
 import Text, { TextProps } from "./Text";
-import { TextStyle } from "react-native";
+import { Text as NativeText, TextStyle } from "react-native";
 
 
-interface Props {
+interface Props extends React.ComponentProps<typeof NativeText> {
   children?: ReactNode;
   color?: TextProps["color"];
   style?: TextStyle;
-  props?: TextProps['props'];
 }
 
 const TextPrimary = ({ children, color, style, ...props }: Props) => (
