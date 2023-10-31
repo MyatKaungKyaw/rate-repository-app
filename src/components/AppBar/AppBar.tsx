@@ -1,21 +1,26 @@
-import { View, StyleSheet, Pressable } from 'react-native';
-import theme from '../../theme';
-import TextPrimary from '../Text/TextPrimary';
+import { View, StyleSheet, ScrollView } from "react-native";
+import theme from "../../theme";
+import AppBarTab from "./AppBarTab";
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: theme.length.height,
     backgroundColor: theme.colors.textPrimary,
     height: theme.length.barHeight,
+    display: "flex",
+    flexDirection: "row",
   },
 });
 
 const AppBar = () => {
-  return <View style={styles.container}>
-    <Pressable>
-      <TextPrimary color='secondary'>Repositories</TextPrimary>
-    </Pressable>
-  </View>;
+  return (
+    <View style={styles.container}>
+      <ScrollView horizontal>
+        <AppBarTab text="Repositories" linkTo="/" />
+        <AppBarTab text="Sign in" linkTo="sign-in" />
+      </ScrollView>
+    </View>
+  );
 };
 
 export default AppBar;
