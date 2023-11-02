@@ -6,19 +6,21 @@ import Text from "../Text/Text";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.primary,
-    borderRadius: (theme.fontSizes.body+9) * theme.length.radiusRatio,
+    borderRadius: theme.length.elementRadius,
     padding: 6,
     paddingTop: 3,
-    alignSelf: 'flex-start',
-  }
-})
+    alignSelf: "flex-start",
+  },
+});
 
 interface Props {
   children?: ReactNode;
 }
 
 const Topic = ({ children }: Props) => (
-  <View style={styles.container}><Text color="secondary">{children}</Text></View>
-)
+  <View style={styles.container}>
+    <Text color="secondary">{children}</Text>
+  </View>
+);
 
 export default Topic;

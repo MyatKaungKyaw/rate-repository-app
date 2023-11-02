@@ -1,22 +1,22 @@
-import { Image, StyleSheet, View } from "react-native"
-import TextPrimary from "../Text/TextPrimary"
-import Text from "../Text/Text"
-import theme from "../../theme"
-import Topic from "./Topic"
-import Count from "./Count"
+import { Image, StyleSheet, View } from "react-native";
+import TextPrimary from "../Text/TextPrimary";
+import Text from "../Text/Text";
+import theme from "../../theme";
+import Topic from "./Topic";
+import Count from "./Count";
 
 interface props {
   item: {
-    id: string
-    fullName: string
-    description: string
-    language: string
-    forksCount: number
-    stargazersCount: number
-    ratingAverage: number
-    reviewCount: number
-    ownerAvatarUrl: string
-  }
+    id: string;
+    fullName: string;
+    description: string;
+    language: string;
+    forksCount: number;
+    stargazersCount: number;
+    ratingAverage: number;
+    reviewCount: number;
+    ownerAvatarUrl: string;
+  };
 }
 
 const styles = StyleSheet.create({
@@ -29,26 +29,26 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.secondary,
     padding: 10,
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
   },
   avaterAndDetailContainer: {
     flex: 1,
-    flexDirection: 'row',
-    flexBasis: 'auto',
+    flexDirection: "row",
+    flexBasis: "auto",
     columnGap: 15,
   },
   detailContainer: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
     rowGap: 8,
   },
   countContainer: {
     flex: 1,
-    flexDirection: 'row',
-    alignSelf: 'flex-start',
+    flexDirection: "row",
+    alignSelf: "flex-start",
     columnGap: 15,
-    flexWrap: 'wrap',
-    flexBasis: 'auto',
+    flexWrap: "wrap",
+    flexBasis: "auto",
   },
 });
 
@@ -56,10 +56,7 @@ const RepositoryItem = ({ item }: props): JSX.Element => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.avaterAndDetailContainer}>
-        <Image
-          style={styles.avatar}
-          source={{ uri: item.ownerAvatarUrl }}
-        />
+        <Image style={styles.avatar} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.detailContainer}>
           <TextPrimary>{item.fullName}</TextPrimary>
           <Text color="tertiary">{item.description}</Text>
@@ -72,8 +69,8 @@ const RepositoryItem = ({ item }: props): JSX.Element => {
         <Count count={item.reviewCount} unit="Reviews" />
         <Count count={item.ratingAverage} unit="Rating" />
       </View>
-    </View >
+    </View>
   );
-}
+};
 
 export default RepositoryItem;
