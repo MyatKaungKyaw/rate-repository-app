@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 export interface TextProps extends React.ComponentProps<typeof NativeText> {
-  color?: 'secondary' | 'primary' | 'tertiary';
+  color?: 'secondary' | 'primary' | 'tertiary' | string;
   fontSize?: 'subheading';
   fontWeight?: 'bold';
   style?: TextStyle;

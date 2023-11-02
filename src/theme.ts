@@ -1,4 +1,5 @@
 import Constants from "expo-constants";
+import { Platform } from "react-native";
 
 const bodyFontSize = 14;
 const radiusRatio = 10 / 57;
@@ -11,6 +12,7 @@ const theme = {
     primary: "#0366d6",
     secondary: "#faf9f9",
     mainBackGround: "#e1e4e8",
+    error: "#d73a4a",
   },
   fontSizes: {
     body: bodyFontSize,

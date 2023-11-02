@@ -9,6 +9,7 @@ import { Formik, FormikProps, useField } from "formik";
 import FormikTextInput from "./FormikTextInput";
 import theme from "../theme";
 import Text from "./Text/Text";
+import * as yup from "yup";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,11 +24,8 @@ const styles = StyleSheet.create({
   },
   inputText: {
     backgroundColor: theme.colors.secondary,
-    borderRadius: (theme.fontSizes.body + 9) * theme.length.radiusRatio,
     alignSelf: "flex-start",
-    padding: 6,
     width: "100%",
-    borderWidth: 1,
   },
   pressable: {
     backgroundColor: theme.colors.primary,
@@ -84,8 +82,17 @@ const SignIn = () => {
     console.log(values);
   };
 
+  const validationSchema = yup.object().shape({
+    userName: yup.string().required(),
+    password: yup.string().required(),
+  });
+
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
       {(props: FormikProps<FormValues>) => <SubmitForm {...props} />}
     </Formik>
   );
