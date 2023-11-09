@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { FlatList, View, StyleSheet } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import { RepositoryListType } from "./types";
+import useRepositories from "../../hooks/useRepositories";
 
 const styles = StyleSheet.create({
   separator: {
@@ -59,21 +60,7 @@ const repositories = [
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
-  const [repositories, setRepositories] = useState<RepositoryListType>();
-
-  const fetchRepositories = async () => {
-    // Replace the IP address part with your own IP address!
-    const response = await fetch("http://192.168.1.33:5000/api/repositories");
-    const json = (await response.json()) as RepositoryListType;
-
-    console.log(json);
-
-    setRepositories(json);
-  };
-
-  useEffect(() => {
-    fetchRepositories();
-  }, []);
+  const { repositories } = useRepositories();
 
   // Get the nodes from the edges array
   const repositoryNodes = repositories
