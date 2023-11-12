@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.secondary,
     display: "flex",
     rowGap: 10,
-    width: 200,
+    width: '100%',
     height: "auto",
     padding: 10,
     borderBottomLeftRadius: theme.length.elementRadius,
