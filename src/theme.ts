@@ -20,7 +20,7 @@ const theme = {
   },
   fonts: {
     main: Platform.select({
-      android: "Sans-serif",
+      android: "sans-serif",
       ios: "Arial",
       default: "System",
     }),
@@ -31,7 +31,7 @@ const theme = {
   },
   length: {
     height: Constants.statusBarHeight,
-    barHeight: 35,
+    barHeight: Constants.statusBarHeight + 35,
     logoLength: 50,
     radiusRatio,
     elementRadius: (bodyFontSize + 9) * radiusRatio,
