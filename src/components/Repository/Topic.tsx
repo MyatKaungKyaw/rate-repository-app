@@ -1,6 +1,7 @@
-import { StyleSheet, View } from "react-native";
-import theme from "../../theme";
 import { ReactNode } from "react";
+import { StyleSheet, View } from "react-native";
+
+import theme from "../../theme";
 import Text from "../Text/Text";
 
 const styles = StyleSheet.create({

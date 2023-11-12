@@ -1,5 +1,6 @@
-import { RepositoryListType } from "../components/Repository/types";
 import { useQuery } from "@apollo/client";
+
+import { RepositoryListType } from "../components/Repository/types";
 import { repositories as getRepos } from "../graphql/queries";
 
 const useRepositories = () => {

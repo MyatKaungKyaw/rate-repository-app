@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet } from "react-native";
 import { Link } from "react-router-native";
+
 import TextPrimary from "../Text/TextPrimary";
 
 interface Props {

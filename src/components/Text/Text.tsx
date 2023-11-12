@@ -1,7 +1,7 @@
-import { Text as NativeText, StyleSheet, TextStyle } from 'react-native';
+import { ReactNode } from "react";
+import { Text as NativeText, StyleSheet, TextStyle } from "react-native";
 
-import theme from '../../theme';
-import { ReactNode } from 'react';
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   text: {
@@ -28,25 +28,36 @@ const styles = StyleSheet.create({
 });
 
 export interface TextProps extends React.ComponentProps<typeof NativeText> {
-  color?: 'secondary' | 'primary' | 'tertiary' | string;
-  fontSize?: 'subheading';
-  fontWeight?: 'bold';
+  color?: "secondary" | "primary" | "tertiary" | string;
+  fontSize?: "subheading";
+  fontWeight?: "bold";
   style?: TextStyle;
   children?: ReactNode;
 }
 
-const Text = ({ color, fontSize, fontWeight, style, children, ...props }: TextProps) => {
+const Text = ({
+  color,
+  fontSize,
+  fontWeight,
+  style,
+  children,
+  ...props
+}: TextProps) => {
   const textStyle = [
     styles.text,
-    color === 'secondary' && styles.colorTextSecondary,
-    color === 'primary' && styles.colorPrimary,
-    color === 'tertiary' && styles.colorTextTertiary,
-    fontSize === 'subheading' && styles.fontSizeSubheading,
-    fontWeight === 'bold' && styles.fontWeightBold,
+    color === "secondary" && styles.colorTextSecondary,
+    color === "primary" && styles.colorPrimary,
+    color === "tertiary" && styles.colorTextTertiary,
+    fontSize === "subheading" && styles.fontSizeSubheading,
+    fontWeight === "bold" && styles.fontWeightBold,
     style,
   ];
 
-  return <NativeText style={textStyle} {...props}>{children}</NativeText>;
+  return (
+    <NativeText style={textStyle} {...props}>
+      {children}
+    </NativeText>
+  );
 };
 
 export default Text;

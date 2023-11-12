@@ -1,9 +1,10 @@
 import { Image, StyleSheet, View } from "react-native";
-import TextPrimary from "../Text/TextPrimary";
-import Text from "../Text/Text";
-import theme from "../../theme";
-import Topic from "./Topic";
+
 import Count from "./Count";
+import Topic from "./Topic";
+import theme from "../../theme";
+import Text from "../Text/Text";
+import TextPrimary from "../Text/TextPrimary";
 
 interface props {
   item: {

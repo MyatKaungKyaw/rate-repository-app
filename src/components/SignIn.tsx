@@ -1,22 +1,17 @@
-import {
-  View,
-  StyleSheet,
-  Pressable,
-  Button,
-  TouchableHighlightComponent,
-} from "react-native";
 import { Formik, FormikProps, useField } from "formik";
-import FormikTextInput from "./FormikTextInput";
-import theme from "../theme";
-import Text from "./Text/Text";
+import { View, StyleSheet, Pressable } from "react-native";
 import * as yup from "yup";
+
+import FormikTextInput from "./FormikTextInput";
+import Text from "./Text/Text";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.secondary,
     display: "flex",
     rowGap: 10,
-    width: '100%',
+    width: "100%",
     height: "auto",
     padding: 10,
     borderBottomLeftRadius: theme.length.elementRadius,
@@ -42,8 +37,8 @@ interface FormValues {
 }
 
 const SubmitForm = ({ handleSubmit }: FormikProps<FormValues>) => {
-  const [nameField, nameMeta, nameHelper] = useField("userName");
-  const [passwordField, passwordMeta, passwordHelper] = useField("password");
+  const [nameField, _nameMeta, nameHelper] = useField("userName");
+  const [passwordField, _passwordMeta, passwordHelper] = useField("password");
 
   return (
     <View style={styles.container}>
