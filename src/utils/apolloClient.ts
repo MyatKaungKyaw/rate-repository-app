@@ -1,7 +1,10 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import Constants from "expo-constants";
+
+const uri = Constants.expoConfig?.extra && Constants.expoConfig.extra.apolloUri;
 
 const httpLink = createHttpLink({
-  uri: "http://10.1.9.144:4000/api/repositories",
+  uri,
 });
 
 const createApolloClient = () => {
