@@ -5,6 +5,8 @@ import * as yup from "yup";
 import FormikTextInput from "./FormikTextInput";
 import Text from "./Text/Text";
 import theme from "../theme";
+import useSignIn from "../hooks/useSignIn";
+import { AuthenticateInput } from "../graphql/types";
 
 const styles = StyleSheet.create({
   container: {
@@ -32,18 +34,18 @@ const styles = StyleSheet.create({
 });
 
 interface FormValues {
-  userName: string;
+  username: string;
   password: string;
 }
 
 const SubmitForm = ({ handleSubmit }: FormikProps<FormValues>) => {
-  const [nameField, _nameMeta, nameHelper] = useField("userName");
+  const [nameField, _nameMeta, nameHelper] = useField("username");
   const [passwordField, _passwordMeta, passwordHelper] = useField("password");
 
   return (
     <View style={styles.container}>
       <FormikTextInput
-        name="userName"
+        name="username"
         placeholder="User Name"
         value={nameField.value}
         onChangeText={(text) => nameHelper.setValue(text)}
@@ -67,18 +69,22 @@ const SubmitForm = ({ handleSubmit }: FormikProps<FormValues>) => {
 };
 
 const SignIn = () => {
+  const [signIn, { data }] = useSignIn();
   const initialValues = {
-    userName: "",
+    username: "",
     password: "",
   };
 
   const onSubmit = (values: FormValues) => {
-    console.log("onsubmit");
-    console.log(values);
+    const signInInput: AuthenticateInput = {
+      credentials: { ...values },
+    };
+
+    signIn(signInInput);
   };
 
   const validationSchema = yup.object().shape({
-    userName: yup.string().required(),
+    username: yup.string().required(),
     password: yup.string().required(),
   });
 

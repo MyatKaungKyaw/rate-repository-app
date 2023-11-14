@@ -30,3 +30,27 @@ export interface PageInfo {
   startCursor: string;
   endCursor: string;
 }
+
+export interface AuthenticateResponse {
+  authenticate: Authenticate;
+}
+
+interface Authenticate {
+  accessToken: string;
+  expiresAt: string;
+  user: User;
+}
+
+interface User {
+  id: string;
+  username: string;
+}
+
+export interface AuthenticateInput {
+  credentials: Credentials;
+}
+
+interface Credentials {
+  password: string;
+  username: string;
+}
