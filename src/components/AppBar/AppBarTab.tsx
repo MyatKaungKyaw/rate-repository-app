@@ -6,6 +6,7 @@ import TextPrimary from "../Text/TextPrimary";
 interface Props {
   text: string;
   linkTo: string;
+  onPress?: () => Promise<void>;
 }
 
 const styles = StyleSheet.create({
@@ -15,10 +16,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBarTab = ({ text, linkTo }: Props) => {
+const AppBarTab = ({ text, linkTo, onPress }: Props) => {
   return (
     <Pressable style={styles.container}>
-      <Link to={linkTo}>
+      <Link to={linkTo} onPress={onPress}>
         <TextPrimary color="secondary">{text}</TextPrimary>
       </Link>
     </Pressable>
