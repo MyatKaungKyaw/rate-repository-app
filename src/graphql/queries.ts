@@ -30,3 +30,12 @@ export const repositories = gql`
     }
   }
 `;
+
+export const me = gql`
+  query {
+    me {
+      id
+      username
+    }
+  }
+`;

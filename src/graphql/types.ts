@@ -54,3 +54,12 @@ interface Credentials {
   password: string;
   username: string;
 }
+
+export interface MeType {
+  me: Me;
+}
+
+interface Me {
+  id: string;
+  username: string;
+}
