@@ -1,12 +1,14 @@
 import { Formik, FormikProps, useField } from "formik";
+import { useEffect } from "react";
 import { View, StyleSheet, Pressable } from "react-native";
+import { useNavigate } from "react-router-native";
 import * as yup from "yup";
 
 import FormikTextInput from "./FormikTextInput";
 import Text from "./Text/Text";
-import theme from "../theme";
-import useSignIn from "../hooks/useSignIn";
 import { AuthenticateInput } from "../graphql/types";
+import useSignIn from "../hooks/useSignIn";
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -70,10 +72,18 @@ const SubmitForm = ({ handleSubmit }: FormikProps<FormValues>) => {
 
 const SignIn = () => {
   const [signIn, { data }] = useSignIn();
+  const navigate = useNavigate();
+
   const initialValues = {
     username: "",
     password: "",
   };
+
+  useEffect(() => {
+    if (data?.authenticate.accessToken) {
+      navigate("/");
+    }
+  }, [data]);
 
   const onSubmit = (values: FormValues) => {
     const signInInput: AuthenticateInput = {
