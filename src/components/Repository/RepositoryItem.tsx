@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 
 const RepositoryItem = ({ item }: props): JSX.Element => {
   return (
-    <View style={styles.mainContainer}>
+    <View testID="repositoryItem" style={styles.mainContainer}>
       <View style={styles.avaterAndDetailContainer}>
         <Image style={styles.avatar} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.detailContainer}>

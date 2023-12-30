@@ -1,6 +1,6 @@
 {
   "root": true,
   "extends": [
-    "universe/native"
+    "universe/native", "eslint:recommended", "plugin:react/recommended", "plugin:jest/recommended"
   ]
 }

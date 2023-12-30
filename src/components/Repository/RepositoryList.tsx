@@ -2,6 +2,8 @@ import { FlatList, View, StyleSheet } from "react-native";
 
 import RepositoryItem from "./RepositoryItem";
 import useRepositories from "../../hooks/useRepositories";
+import { userEvent } from "@testing-library/react-native";
+import { RepositoryListType } from "../../graphql/types";
 
 const styles = StyleSheet.create({
   separator: {
@@ -58,9 +60,11 @@ const repositories = [
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryList = () => {
-  const { repositories } = useRepositories();
+interface Props {
+  repositories: RepositoryListType | undefined;
+}
 
+export const RepositoryListContainer = ({ repositories }: Props) => {
   // Get the nodes from the edges array
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
@@ -72,6 +76,12 @@ const RepositoryList = () => {
       renderItem={RepositoryItem}
     />
   );
+};
+
+const RepositoryList = () => {
+  const { repositories } = useRepositories();
+
+  return <RepositoryListContainer repositories={repositories} />;
 };
 
 export default RepositoryList;
