@@ -35,12 +35,16 @@ const styles = StyleSheet.create({
   },
 });
 
-interface FormValues {
+export interface FormValues {
   username: string;
   password: string;
 }
 
-const SubmitForm = ({ handleSubmit }: FormikProps<FormValues>) => {
+interface SigninFormInputPorps {
+  handleSubmit: FormikProps<FormValues>["handleSubmit"];
+}
+
+const SignInFormInput = ({ handleSubmit }: SigninFormInputPorps) => {
   const [nameField, _nameMeta, nameHelper] = useField("username");
   const [passwordField, _passwordMeta, passwordHelper] = useField("password");
 
@@ -70,14 +74,41 @@ const SubmitForm = ({ handleSubmit }: FormikProps<FormValues>) => {
   );
 };
 
-const SignIn = () => {
-  const [signIn, { data }] = useSignIn();
-  const navigate = useNavigate();
+interface SignInFormProps {
+  handleSubmit: (values: FormValues) => void;
+}
+
+export const SignInForm = ({ handleSubmit }: SignInFormProps) => {
+  const onSubmit = (values: FormValues) => {
+    handleSubmit(values);
+  };
 
   const initialValues = {
     username: "",
     password: "",
   };
+
+  const validationSchema = yup.object().shape({
+    username: yup.string().required(),
+    password: yup.string().required(),
+  });
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {(props: FormikProps<FormValues>) => (
+        <SignInFormInput handleSubmit={props.handleSubmit} />
+      )}
+    </Formik>
+  );
+};
+
+const SignIn = () => {
+  const [signIn, { data }] = useSignIn();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data?.authenticate.accessToken) {
@@ -93,20 +124,7 @@ const SignIn = () => {
     signIn(signInInput);
   };
 
-  const validationSchema = yup.object().shape({
-    username: yup.string().required(),
-    password: yup.string().required(),
-  });
-
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {(props: FormikProps<FormValues>) => <SubmitForm {...props} />}
-    </Formik>
-  );
+  return <SignInForm handleSubmit={onSubmit} />;
 };
 
 export default SignIn;
