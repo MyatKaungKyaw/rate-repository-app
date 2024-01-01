@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react-native";
 
-import { RepositoryListContainer } from "../../components/Repository/RepositoryList";
-import { RepositoryListType } from "../../graphql/types";
+import { RepositoryListContainer } from "../../../components/Repository/RepositoryList";
+import { RepositoryListType } from "../../../graphql/types";
 
 describe("RepositoryList", () => {
   describe("RepositoryListContainer", () => {
