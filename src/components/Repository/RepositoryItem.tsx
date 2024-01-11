@@ -1,4 +1,5 @@
-import { Image, StyleSheet, View } from "react-native";
+import { Image, Pressable, StyleSheet, View } from "react-native";
+import * as Linking from "expo-linking";
 
 import Count from "./Count";
 import Topic from "./Topic";
@@ -6,7 +7,7 @@ import theme from "../../theme";
 import Text from "../Text/Text";
 import TextPrimary from "../Text/TextPrimary";
 
-interface props {
+export interface RepositoryItemProps {
   item: {
     id: string;
     fullName: string;
@@ -17,6 +18,7 @@ interface props {
     ratingAverage: number;
     reviewCount: number;
     ownerAvatarUrl: string;
+    url?: string;
   };
 }
 
@@ -29,11 +31,9 @@ const styles = StyleSheet.create({
   mainContainer: {
     backgroundColor: theme.colors.secondary,
     padding: 10,
-    flex: 1,
-    flexDirection: "column",
+    rowGap: 8,
   },
   avaterAndDetailContainer: {
-    flex: 1,
     flexDirection: "row",
     flexBasis: "auto",
     columnGap: 15,
@@ -44,16 +44,29 @@ const styles = StyleSheet.create({
     rowGap: 8,
   },
   countContainer: {
-    flex: 1,
     flexDirection: "row",
     alignSelf: "flex-start",
     columnGap: 15,
     flexWrap: "wrap",
     flexBasis: "auto",
   },
+  pressableContainer: {
+    backgroundColor: theme.colors.primary,
+    borderRadius: theme.length.elementRadius,
+    padding: 6,
+    paddingTop: 6,
+    height: 30,
+    width: "100%",
+    alignItems: "center",
+  },
 });
 
-const RepositoryItem = ({ item }: props): JSX.Element => {
+const RepositoryItem = ({ item }: RepositoryItemProps): JSX.Element => {
+  const openGHOnpressHandler = () => {
+    if (item.url == undefined) return;
+    Linking.openURL(item.url);
+  };
+
   return (
     <View testID="repositoryItem" style={styles.mainContainer}>
       <View style={styles.avaterAndDetailContainer}>
@@ -70,6 +83,14 @@ const RepositoryItem = ({ item }: props): JSX.Element => {
         <Count count={item.reviewCount} unit="Reviews" />
         <Count count={item.ratingAverage} unit="Rating" />
       </View>
+      {item.url != undefined && (
+        <Pressable
+          style={styles.pressableContainer}
+          onPress={openGHOnpressHandler}
+        >
+          <Text color="secondary">Open in GitHub</Text>
+        </Pressable>
+      )}
     </View>
   );
 };

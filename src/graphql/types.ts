@@ -63,3 +63,13 @@ interface Me {
   id: string;
   username: string;
 }
+
+export interface RepositoryType {
+  id: string;
+  fullName: string;
+  url: string;
+}
+
+export interface RepositoryInput {
+  repositoryId: string;
+}

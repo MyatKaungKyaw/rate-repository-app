@@ -1,9 +1,9 @@
-import { FlatList, View, StyleSheet } from "react-native";
+import { FlatList, View, StyleSheet, Pressable } from "react-native";
 
-import RepositoryItem from "./RepositoryItem";
+import RepositoryItem, { RepositoryItemProps } from "./RepositoryItem";
 import useRepositories from "../../hooks/useRepositories";
-import { userEvent } from "@testing-library/react-native";
 import { RepositoryListType } from "../../graphql/types";
+import { useNavigate } from "react-router-native";
 
 const styles = StyleSheet.create({
   separator: {
@@ -60,21 +60,52 @@ const repositories = [
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-interface Props {
+interface RepositoryListContainerProps {
   repositories: RepositoryListType | undefined;
 }
 
-export const RepositoryListContainer = ({ repositories }: Props) => {
+export const RepositoryListContainer = ({
+  repositories,
+}: RepositoryListContainerProps) => {
+  const navigate = useNavigate();
+
   // Get the nodes from the edges array
   const repositoryNodes = repositories
-    ? repositories.edges.map((edge) => edge.node)
+    ? repositories.edges.map((edge) => {
+        // return edge.node;
+        return {
+          navigate: navigate,
+          ...edge.node,
+        };
+      })
     : [];
+
   return (
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={RepositoryItem}
+      renderItem={RepositoryPressable}
     />
+  );
+};
+
+type RepositoryPressableProps = {
+  item: {
+    navigate: ReturnType<typeof useNavigate>;
+  } & RepositoryItemProps["item"];
+};
+
+const RepositoryPressable = (props: RepositoryPressableProps) => {
+  const { navigate, ...item } = props.item;
+
+  const onPressHandler = () => {
+    navigate(`repository/${props.item.id}`, { state: item });
+  };
+
+  return (
+    <Pressable onPress={onPressHandler}>
+      <RepositoryItem item={item} />
+    </Pressable>
   );
 };
 
