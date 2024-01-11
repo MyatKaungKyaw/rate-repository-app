@@ -13,7 +13,6 @@ import theme from "../theme";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.colors.secondary,
-    display: "flex",
     rowGap: 10,
     width: "100%",
     height: "auto",
