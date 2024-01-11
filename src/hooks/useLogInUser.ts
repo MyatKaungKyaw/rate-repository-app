@@ -10,7 +10,7 @@ const useLogInUser = () => {
 
   let user: MeType | undefined;
 
-  if (!loading && "me" in data) {
+  if (!loading && data && "me" in data) {
     user = data;
   }
 
