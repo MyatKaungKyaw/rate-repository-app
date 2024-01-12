@@ -70,6 +70,3 @@ export interface RepositoryType {
   url: string;
 }
 
-export interface RepositoryInput {
-  repositoryId: string;
-}

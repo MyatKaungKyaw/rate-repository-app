@@ -1,10 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { repository as getRepo } from "../graphql/queries";
-import { RepositoryInput, RepositoryType } from "../graphql/types";
 
-interface QueryType {
-  repository: RepositoryType;
-}
 
 const useRepository = (repositoryId: string) => {
   const { loading, data, refetch } = useQuery<QueryType, RepositoryInput>(
@@ -20,5 +16,43 @@ const useRepository = (repositoryId: string) => {
 
   return { repository, loading, refetch };
 };
+
+//Repository query type
+
+interface QueryType {
+  repository: Repository;
+}
+
+export interface Repository {
+  id: string;
+  fullName: string;
+  url: string;
+  reviews: Reviews;
+}
+
+export interface Reviews {
+  edges: Edge[];
+}
+
+export interface Edge {
+  node: Node;
+}
+
+export interface Node {
+  id: string;
+  text: string;
+  rating: number;
+  createdAt: string;
+  user: User;
+}
+
+export interface User {
+  id: string;
+  username: string;
+}
+
+export interface RepositoryInput {
+  repositoryId: string;
+}
 
 export default useRepository;
