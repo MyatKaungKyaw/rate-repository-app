@@ -30,15 +30,15 @@ export interface Repository {
   reviews: Reviews;
 }
 
-export interface Reviews {
+interface Reviews {
   edges: Edge[];
 }
 
-export interface Edge {
+interface Edge {
   node: Node;
 }
 
-export interface Node {
+interface Node {
   id: string;
   text: string;
   rating: number;
@@ -46,12 +46,12 @@ export interface Node {
   user: User;
 }
 
-export interface User {
+interface User {
   id: string;
   username: string;
 }
 
-export interface RepositoryInput {
+interface RepositoryInput {
   repositoryId: string;
 }
 
