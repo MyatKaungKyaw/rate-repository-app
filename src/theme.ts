@@ -35,6 +35,7 @@ const theme = {
     logoLength: 50,
     radiusRatio,
     elementRadius: (bodyFontSize + 9) * radiusRatio,
+    ratingContainerLength: 40,
   },
 } as const;
 
