@@ -70,3 +70,26 @@ export interface RepositoryType {
   url: string;
 }
 
+export interface CreateReviewInput {
+  review: Review;
+}
+
+interface Review {
+  ownerName: string;
+  rating: number;
+  repositoryName: string;
+  text: string;
+}
+
+export interface CreateReviewResponse {
+  createReview: CreateReview;
+}
+
+interface CreateReview {
+  createdAt: string;
+  id: string;
+  rating: number;
+  repositoryId: string;
+  text: string;
+  userId: string;
+}
