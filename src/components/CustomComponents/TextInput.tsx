@@ -5,7 +5,7 @@ import {
   TextStyle,
 } from "react-native";
 
-import theme from "../theme";
+import theme from "../../theme";
 
 interface Props extends React.ComponentProps<typeof NativeTextInput> {
   style?: StyleProp<TextStyle>;

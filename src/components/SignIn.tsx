@@ -4,7 +4,7 @@ import { View, StyleSheet, Pressable } from "react-native";
 import { useNavigate } from "react-router-native";
 import * as yup from "yup";
 
-import FormikTextInput from "./FormikTextInput";
+import FormikTextInput from "./CustomComponents/FormikTextInput";
 import Text from "./Text/Text";
 import { AuthenticateInput } from "../graphql/types";
 import useSignIn from "../hooks/useSignIn";

@@ -1,11 +1,14 @@
 import { useField } from "formik";
 import { StyleSheet, TextInput as NativeTextInput } from "react-native";
 
-import Text from "./Text/Text";
+import Text from "../Text/Text";
 import TextInput from "./TextInput";
-import theme from "../theme";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
+  inputText: {
+    height: theme.length.inputHeight,
+  },
   errorText: {
     marginTop: 5,
     color: theme.colors.error,
@@ -27,6 +30,7 @@ const FormikTextInput = ({ name, ...props }: Props) => {
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
+        style={styles.inputText}
         {...props}
       />
       {showError && (
