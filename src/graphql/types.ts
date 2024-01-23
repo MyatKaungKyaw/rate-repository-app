@@ -74,7 +74,7 @@ export interface CreateReviewInput {
   review: Review;
 }
 
-interface Review {
+export interface Review {
   ownerName: string;
   rating: number;
   repositoryName: string;

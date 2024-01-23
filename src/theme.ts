@@ -36,6 +36,7 @@ const theme = {
     radiusRatio,
     elementRadius: (bodyFontSize + 9) * radiusRatio,
     ratingContainerLength: 40,
+    inputHeight: 50,
   },
 } as const;
 
