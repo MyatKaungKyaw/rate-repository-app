@@ -93,3 +93,20 @@ interface CreateReview {
   text: string;
   userId: string;
 }
+
+export interface CreateUserInput {
+  user: {
+    password: string;
+    username: string;
+  };
+}
+
+export interface CreateUserResponse {
+  createUser: CreateUser;
+}
+
+interface CreateUser {
+  createdAt: string;
+  id: string;
+  username: string;
+}
