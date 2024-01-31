@@ -1,10 +1,10 @@
 import { useMutation } from "@apollo/client";
 import { CreateUserInput, CreateUserResponse } from "../graphql/types";
-import { CreateReview } from "../graphql/mutations";
+import { CreateUser } from "../graphql/mutations";
 
 const useCreateUser = () => {
   const [create, result] = useMutation<CreateUserResponse, CreateUserInput>(
-    CreateReview
+    CreateUser
   );
 
   const createUser = (user: CreateUserInput["user"]) => {
